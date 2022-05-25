@@ -4,8 +4,8 @@ const blogPosts =
       createdAt: "2022-03-22T10:36:37.176Z",
       title: "test",
       text: "this is a test",
-      author:'juan r.'
-      id: "6",
+      author:'juan r.',
+      id: "6"
     }
 db.posts.insertOne(blogPosts)
 
@@ -21,4 +21,22 @@ db.posts.update({id: '6'},
 )
 
 // delete new post
-db.posts.deleteOne({id:'6')
+db.posts.deleteOne({id:'6'})
+
+// assignment to get posts
+const getPosts = (limit,skip,sortField, sortOrder, filterField, filterValue)=> {
+    
+  
+    
+    const sortParams = {}
+    sortParams[sortField]=sortOrder
+    
+    const filterParams = {}
+    filterParams[filterField]=filterValue
+    
+    let dbResult = db.posts.find(filterParams).limit(limit).skip(skip).sort(sortParams).toArray()
+    
+    return dbResult;
+}
+
+console.log(getPosts(10, 2, 'createdAt', 1))
