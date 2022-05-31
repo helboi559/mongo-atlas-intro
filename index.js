@@ -148,7 +148,7 @@ const getList = () => {
         const last = splitted[1]
         const email = `${first}.${last}@gmail.com`
         id = id += 1
-        db.sample.insertOne({'first':first, "last":last, 'userId':id.toString(), 'email':email, "posts":[ele]})
+        db.users.insertOne({'first':first, "last":last, 'userId':id.toString(), 'email':email, "posts":[ele]})
     })
     return;
 }
